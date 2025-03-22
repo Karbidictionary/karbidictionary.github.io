@@ -192,15 +192,16 @@
 
         function getEnglishDefinition(){
             const word = document.getElementById("wordInput").value.toLowerCase();
-
+            
             const definitionElement = document.getElementById("definition");
+            definitionElement.innerHTML=""
 
             for (x in dictionary){
                 const definition = dictionary[x][0];
                 const karbi = dictionary[x][1].split(',');
                 for (let i =0;i<karbi.length;++i){
                     if (romanize(karbi[i])==word){
-                        definitionElement.innerHTML = `
+                        definitionElement.innerHTML += `
                             <strong>${karbi[i]}</strong> <br/>
                             <em>${x}</em> <br/>
                             ${definition}`;
@@ -220,6 +221,9 @@
                     }
                 }
             }
+            if (definitionElement.innerHTML=="")
+                definitionElement.innerHTML = "Sorry, that word is not in the dictionary.";
+
         }
     </script>
 </body>
