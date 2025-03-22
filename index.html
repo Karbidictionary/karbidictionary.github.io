@@ -121,6 +121,7 @@
 
     <script>
 
+        dictionary = {}
 
         fetch('http://learnahom.com/data/karbi.json')  // Replace with your API URL
         .then(response => {
@@ -130,7 +131,8 @@
             return response.json();  // Parse the JSON from the response
         })
         .then(data => {
-            var dictionary = data;  // Handle the JSON data here
+            dictionary = data;  // Handle the JSON data here
+            console.log(dictionary)
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
