@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favico.png">
+    <title>Karbi Dictionary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        /* Basic styling for the page */
+
+        @font-face {
+            font-family: Karbi;
+            src: url(fonts/karbi.woff);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #675AFE;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container styling */
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        #wordInput:focus, #wordInput:focus-visible, #wordInput:active {
+            background: transparent;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            padding-left:5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            margin-left: -2px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Styling for the definition display */
+        #definition {
+            text-align:left;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            min-height: 350px;
+        }
+
+        #definition strong{
+            font-family: Karbi;
+        }
+
+        /* Error message styling */
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Karbi Dictionary</h1>
+
+        <div style="display:flex">
+            <input type="text" id="wordInput" placeholder=" Enter a word to search">
+            <button id="searchBtn"><i class="fa fa-search"></i></button>
+        </div>
+        <div style="display:flex;margin-top: 11px;">
+            <span style="color:#4e4e4e">Headword: </span>
+            <input style="margin-left:10px" type="radio" name="headword" id="headwordEnglish" value="English" checked>
+            <label for="orange">English</label>
+            <input style="margin-left:10px" type="radio" name="headword"    id="headwordKarbi" value="Karbi">
+            <label for="orange">Karbi</label>
+        </div>
+        <p id="definition"></p>
+    </div>
+    
+
+    <script>
+
+
+        fetch('http://learnahom.com/data/karbi.json')  // Replace with your API URL
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();  // Parse the JSON from the response
+        })
+        .then(data => {
+            const dictionary = data;  // Handle the JSON data here
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
+        document.getElementById("wordInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") 
+            document.getElementById("searchBtn").click();
+        });
+
+        document.getElementById("searchBtn").addEventListener("click", function() {
+            if (document.getElementById('headwordEnglish').checked)
+                getKarbiDefinition()
+            else
+                getEnglishDefinition()
+        });
+
+        
+        function romanize(x){
+            x = x.replace(/Q/,"ng") 
+            x = x.replace(/x/,"u") 
+            return x.toLowerCase()
+        }
+
+        // Function to search for the word definition
+        function getKarbiDefinition() {
+            const word = document.getElementById("wordInput").value.toLowerCase();
+
+            const definitionElement = document.getElementById("definition");
+
+            if (dictionary[word]) {
+                const definition = dictionary[word][0];
+                const karbi = dictionary[word][1].split(',');
+                definitionElement.innerHTML = `
+                    <strong>${karbi[0]}</strong> <br/>
+                    <em>${romanize(karbi[0])}</em> <br/>
+                    ${definition}<br/>
+                    synonyms : `;
+                for (let i =1;i<karbi.length;++i){
+                    definitionElement.innerHTML += romanize(karbi[i]) +((i<karbi.length-1) && ', ' || '');
+                }
+                definitionElement.classList.remove('error');
+            } else {
+                definitionElement.innerHTML = "Sorry, that word is not in the dictionary.";
+                definitionElement.classList.add('error');
+            }
+        }
+
+        function getEnglishDefinition(){
+            const word = document.getElementById("wordInput").value.toLowerCase();
+
+            const definitionElement = document.getElementById("definition");
+
+            for (x in dictionary){
+                const definition = dictionary[x][0];
+                const karbi = dictionary[x][1].split(',');
+                let wordExists = false
+                for (let i =0;i<karbi.length;++i){
+                    if (romanize(karbi[i])==word){
+                        wordExists = true
+                        break
+                    }
+                }
+                if (wordExists){
+                    definitionElement.innerHTML = `
+                        <em>${x}</em> <br/>
+                        ${definition}<br/>
+                        synonyms : `;
+                    let synonyms=""
+                    for (let i =0;i<karbi.length;++i){
+                        console.log(x,romanize(karbi[i]))
+                        if (word!=romanize(karbi[i]))
+                            synonyms += romanize(karbi[i]) +',';
+                        
+                    }
+                    if (synonyms[synonyms.length-1]==',')
+                        synonyms = synonyms.substr(0,synonyms.length-1)
+                    definitionElement.innerHTML += synonyms
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
