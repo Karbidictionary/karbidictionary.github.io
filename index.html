@@ -94,6 +94,11 @@
             font-family: Karbi;
         }
 
+        .synonym{
+            font-family: Karbi;
+            font-size: 11px;
+        }
+
         /* Error message styling */
         .error {
             color: red;
@@ -206,12 +211,11 @@
                     for (let i =0;i<karbi.length;++i){
                         console.log(x,romanize(karbi[i]))
                         if (word!=romanize(karbi[i]))
-                            synonyms += karbi[i] +',';
-                        
+                            synonyms += "<span class='synonym'>"+karbi[i]+"</span> (" +romanize(karbi[i])+'),';
                     }
                     if (synonyms[synonyms.length-1]==',')
-                        synonyms = synonyms.substr(0,synonyms.length-1)
-                    definitionElement.innerHTML += "<strong>"+synonyms+"</strong>"
+                        synonyms = synonyms.substr(0,synonyms.length-2)
+                    definitionElement.innerHTML += synonyms
                     break;
                 }
             }
