@@ -214,7 +214,7 @@
                             synonyms += "<span class='synonym'>"+karbi[i]+"</span> (" +romanize(karbi[i])+'),';
                     }
                     if (synonyms[synonyms.length-1]==',')
-                        synonyms = synonyms.substr(0,synonyms.length-2)
+                        synonyms = synonyms.substr(0,synonyms.length-1)
                     definitionElement.innerHTML += synonyms
                     break;
                 }
