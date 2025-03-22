@@ -206,12 +206,12 @@
                     for (let i =0;i<karbi.length;++i){
                         console.log(x,romanize(karbi[i]))
                         if (word!=romanize(karbi[i]))
-                            synonyms += romanize(karbi[i]) +',';
+                            synonyms += karbi[i] +',';
                         
                     }
                     if (synonyms[synonyms.length-1]==',')
                         synonyms = synonyms.substr(0,synonyms.length-1)
-                    definitionElement.innerHTML += synonyms
+                    definitionElement.innerHTML += "<strong>"+synonyms+"</strong>"
                     break;
                 }
             }
