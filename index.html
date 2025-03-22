@@ -179,7 +179,7 @@
                     ${definition}<br/>
                     synonyms : `;
                 for (let i =1;i<karbi.length;++i){
-                    definitionElement.innerHTML += romanize(karbi[i]) +((i<karbi.length-1) && ', ' || '');
+                    definitionElement.innerHTML += "<span class='synonym'>"+karbi[i]+"</span> (" +romanize(karbi[i])+')' +((i<karbi.length-1) && ', ' || '');
                 }
                 definitionElement.classList.remove('error');
             } else {
