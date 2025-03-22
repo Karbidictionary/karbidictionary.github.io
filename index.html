@@ -159,7 +159,7 @@
         
         function romanize(x){
             x = x.replace(/Q/,"ng") 
-            x = x.replace(/c/,"ch") 
+            x = x.replace(/c/gi, "ch")
             x = x.replace(/q/,"ng") 
             x = x.replace(/x/,"u") 
             x = x.replace(/X/,"u") 
