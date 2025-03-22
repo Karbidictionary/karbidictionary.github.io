@@ -192,12 +192,13 @@
                 let wordExists = false
                 for (let i =0;i<karbi.length;++i){
                     if (romanize(karbi[i])==word){
-                        wordExists = true
+                        wordExists = karbi[i]
                         break
                     }
                 }
                 if (wordExists){
                     definitionElement.innerHTML = `
+                        <strong>${wordExists}</em> <br/>
                         <em>${x}</em> <br/>
                         ${definition}<br/>
                         synonyms : `;
