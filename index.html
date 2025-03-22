@@ -168,7 +168,7 @@
 
         // Function to search for the word definition
         function getKarbiDefinition() {
-            const word = document.getElementById("wordInput").value.toLowerCase();
+            const word = document.getElementById("wordInput").value.toLowerCase().replace(/\s+/g, '');
 
             const definitionElement = document.getElementById("definition");
 
@@ -192,7 +192,7 @@
         }
 
         function getEnglishDefinition(){
-            const word = document.getElementById("wordInput").value.toLowerCase();
+            const word = document.getElementById("wordInput").value.toLowerCase().replace(/\s+/g, '');
             
             const definitionElement = document.getElementById("definition");
             definitionElement.innerHTML=""
