@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="favico.png">
     <title>Karbi Dictionary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://raw.githubusercontent.com/gzuidhof/coi-serviceworker/refs/heads/master/coi-serviceworker.js"></script>
     <style>
         /* Basic styling for the page */
 
@@ -131,7 +130,7 @@
             return response.json();  // Parse the JSON from the response
         })
         .then(data => {
-            const dictionary = data;  // Handle the JSON data here
+            var dictionary = data;  // Handle the JSON data here
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
