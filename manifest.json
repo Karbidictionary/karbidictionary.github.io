@@ -1,0 +1,83 @@
+{
+    "short_name": "Karbi Dictionary",
+    "name": "Karbi Dictionary",
+    "theme_color": "#4A90E2",
+    "background_color": "#675AFE",
+    "display": "standalone",
+    "screenshots": [
+        {
+          "src": "img/screenshots/mobile_1.png",
+          "sizes": "750x1334",
+          "type": "image/png",
+          "form_factor": "narrow",
+          "label": "Karbi Headword"
+        },
+        {
+          "src": "img/screenshots/mobile_2.png",
+           "sizes": "750x1334",
+           "type": "image/png",
+           "form_factor": "narrow",
+           "label": "English Headword"
+         },
+         {
+          "src": "img/screenshots/mobile_3.png",
+           "sizes": "750x1334",
+           "type": "image/png",
+           "form_factor": "narrow",
+           "label": "English Headword"
+         },
+        {
+         "src": "img/screenshots/mobile_4.png",
+          "sizes": "750x1334",
+          "type": "image/png",
+          "form_factor": "narrow",
+          "label": "Karbi Headword"
+        },
+        {
+            "src": "img/screenshots/fullscreen.png",
+            "sizes": "2560x1440",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Ahom Translator"
+        }
+    ],
+    "icons": [
+        {  
+     "src": "img/icons/android/mipmap-mdpi/ic_launcher.png",
+     "sizes": "36x36",
+     "type": "image/png",
+     "density": "0.75"
+    },
+      {
+        "src": "img/icons/android/mipmap-mdpi/ic_launcher.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+         "src": "img/icons/android/mipmap-hdpi/ic_launcher.png",
+     "sizes": "72x72",
+     "type": "image/png",
+     "density": "1.5"
+    },
+  
+      {
+      "src": "img/icons/android/mipmap-xhdpi/ic_launcher.png",
+     "sizes": "96x96",
+     "type": "image/png",
+     "density": "2.0"
+    },
+    {
+     "src": "img/icons/android/mipmap-xxhdpi/ic_launcher.png",
+     "sizes": "144x144",
+     "type": "image/png",
+     "density": "3.0"
+    },
+    {
+     "src": "img/icons/android/mipmap-xxxhdpi/ic_launcher.png",
+     "sizes": "192x192",
+     "type": "image/png",
+     "density": "4.0"
+    }
+    ],
+    "start_url": "/"
+  }
