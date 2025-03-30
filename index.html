@@ -185,12 +185,13 @@
             const word = document.getElementById("wordInput").value.toLowerCase().replace(/\s+/g, '');
 
             const definitionElement = document.getElementById("definition");
+            definitionElement.innerHTML = ""
 
             if (dictionary[word]) {
                 for (let i=0;i<dictionary[word].length;i+=2){
                     let definition = dictionary[word][i];
                     let karbi = dictionary[word][i+1].split(',');
-                    definitionElement.innerHTML = `
+                    definitionElement.innerHTML += `
                         <strong>${karbi[0]}</strong>
                         <span class = "audio" data-text="${romanize(karbi[0])}"><i class="fa fa-volume-up"></i></span><br/>
                         <em>${romanize(karbi[0])}</em> <br/>
