@@ -168,6 +168,26 @@
                 getKarbiDefinition()
             else
                 getEnglishDefinition()
+
+            document.querySelectorAll('.audio').forEach(function(element) {
+            element.addEventListener('click', function(event) {
+                try {
+                    const text = this.dataset.text; // Get the data-text attribute
+                    const audio = new Audio('audio/' + text + '.m4a');
+
+                    audio.onerror = function () {
+                        console.error("Audio file not found or cannot be played.");
+                    };
+
+                    audio.play().catch(error => {
+                        console.error("Error playing audio:", error.message);
+                    });
+                } catch (error) {
+                    console.error("Audio error:", error.message);
+                }
+            });
+});
+
         });
 
         
