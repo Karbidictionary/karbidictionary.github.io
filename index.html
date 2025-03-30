@@ -216,6 +216,7 @@
                 for (let i=0;i<dictionary[word].length;i+=2){
                     let definition = dictionary[word][i];
                     let karbi = dictionary[word][i+1].split(',');
+                    console.log(definition, karbi)
                     definitionElement.innerHTML += `
                         <strong>${karbi[0]}</strong>
                         <span class = "audio" data-text="${romanize(karbi[0])}"><i class="fa fa-volume-up"></i></span><br/>
