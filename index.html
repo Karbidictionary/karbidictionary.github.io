@@ -200,6 +200,7 @@
                         definitionElement.innerHTML+=`synonyms : `;
                         for (let i =1;i<karbi.length;++i)
                             definitionElement.innerHTML += "<span class='synonym'>"+karbi[i]+"</span> (" +romanize(karbi[i])+')' +((i<karbi.length-1) && ', ' || '');
+                        definitionElement.innerHTML += '<br/>'
                     }
                 }
                 definitionElement.classList.remove('error');
