@@ -4,6 +4,8 @@
     "theme_color": "#4A90E2",
     "background_color": "#675AFE",
     "display": "standalone",
+    "orientation": "portrait",
+    "description": "A simple Karbi-English dictionary",
     "screenshots": [
         {
           "src": "img/screenshots/mobile_1.png",
