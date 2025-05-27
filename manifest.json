@@ -2,7 +2,7 @@
     "short_name": "Karbi Dictionary",
     "name": "Karbi Dictionary",
     "theme_color": "#4A90E2",
-    "background_color": "#675AFE",
+    "background_color": "#FFFFFF",
     "display": "standalone",
     "orientation": "portrait",
     "description": "A simple Karbi-English dictionary",
